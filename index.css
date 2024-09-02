@@ -1,0 +1,14 @@
+.container {
+    background-color: khaki;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* translate: -50%, -50%; */
+    transform: translate(-50%, -50%);
+}
+
+.square {
+    border: 1px black solid;
+    width: 10px;
+    height: 10px;
+}
