@@ -31,7 +31,7 @@ function create16x16Grid (grid) {
     }
 }
 
-create16x16Grid(144)
+create16x16Grid(96)
 
 // function createGrid(numberOfSquares) {
 //     const container = document.querySelector(".container");

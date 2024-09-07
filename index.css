@@ -22,7 +22,7 @@
     /* flex: 1 0 auto; */
     width: calc(960px/16); /* Ajuster dynamiquement en fonction du nombre de colonnes souhaité */
     height: auto; /* Laisser la hauteur s'ajuster automatiquement */
-    aspect-ratio: 1/1; /* Assurer que les carrés gardent un ratio de 1:1 */
+    /* aspect-ratio: 1/1; Assurer que les carrés gardent un ratio de 1:1 */
     background-color: red;
 }
 
