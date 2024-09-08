@@ -11,12 +11,20 @@ nouvelle grille de la dimension de son input doit être généré
 
 
 
-let squares16x16 = new Array(16);
+let squares16x16 = new Array();
 const container = document.querySelector(".container");
+let userRangeChoice = document.getElementById("user-range-choice");
+let numberOfSquaresText = document.querySelector(".number-of-squares");
+
+numberOfSquaresText.textContent = userRangeChoice.value;
+
 
 
 
 function create16x16Grid (grid) {
+
+    container.innerHTML = ""; // Réinitialiser le conteneur
+
 
     for (let i = 0; i < grid; i++) {
         squares16x16[i] = document.createElement("div");//Assign new div element to the array objects of 16 elements
@@ -28,10 +36,35 @@ function create16x16Grid (grid) {
         squares16x16[i].addEventListener("mouseleave", (event) => {
             event.target.classList.remove("square16x16Hover");
         })
-    }
-}
 
-create16x16Grid(96)
+    }
+
+}
+create16x16Grid(32);
+
+// function createGrid(numberOfSquares) {
+
+//     container.innerHTML = ""; // Réinitialiser le conteneur
+
+//         for (let i = 0; i < numberOfSquares; i++) {
+//         let square = document.createElement("div");
+//         // square.classList.add("square16x16");
+//         // square.style.width = `${squareSize}%`;
+//         // square.style.height = `${squareSize}vw`; // Maintenir un ratio carré
+//         container.appendChild(square);
+//         square.classList.add("square16x16");
+//     }
+// }
+
+
+
+
+userRangeChoice.addEventListener("input", (event) => {
+    numberOfSquaresText.textContent = event.target.value;
+    // createGrid(parseInt(numberOfSquaresText.textContent))
+    create16x16Grid(parseInt(numberOfSquaresText.textContent));
+});
+
 
 // function createGrid(numberOfSquares) {
 //     const container = document.querySelector(".container");

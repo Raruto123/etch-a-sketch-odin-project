@@ -3,8 +3,8 @@
 
 .container {
     background-color: green;
-    width: 960px;
-    height: 480px;
+    width: 760px;
+    height: 700px;
     /* border: 1px black solid; */
     position: absolute;
     left: 50%;
@@ -20,7 +20,7 @@
     /* width: 60px;
     height: 30px; */
     /* flex: 1 0 auto; */
-    width: calc(960px/16); /* Ajuster dynamiquement en fonction du nombre de colonnes souhaité */
+    width: calc(760px/8); /* Ajuster dynamiquement en fonction du nombre de colonnes souhaité */
     height: auto; /* Laisser la hauteur s'ajuster automatiquement */
     /* aspect-ratio: 1/1; Assurer que les carrés gardent un ratio de 1:1 */
     background-color: red;
