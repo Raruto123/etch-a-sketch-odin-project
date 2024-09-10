@@ -2,7 +2,7 @@
 
 
 .container {
-    background-color: green;
+    /* background-color: white; */
     width: 760px;
     height: 700px;
     /* border: 1px black solid; */
@@ -16,16 +16,24 @@
 }
 
 .square16x16 {
-    outline: 1px solid;
+    outline: 1px solid rgba(79, 78, 78, 0.334);
     /* width: 60px;
     height: 30px; */
     /* flex: 1 0 auto; */
     width: calc(760px/8); /* Ajuster dynamiquement en fonction du nombre de colonnes souhaité */
     height: auto; /* Laisser la hauteur s'ajuster automatiquement */
     /* aspect-ratio: 1/1; Assurer que les carrés gardent un ratio de 1:1 */
-    background-color: red;
+    background-color: white;
 }
 
 .square16x16Hover {
-    background-color: green;
+    background-color: rgba(79, 78, 78, 0.334);
+}
+
+.square16x16Click {
+    background-color: black;
+}
+
+.square16x16UserBgColor {
+    background-color: red;
 }
