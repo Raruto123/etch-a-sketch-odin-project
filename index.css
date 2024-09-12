@@ -27,13 +27,14 @@
 }
 
 .square16x16Hover {
-    background-color: rgba(79, 78, 78, 0.334);
+    /* background-color: rgba(79, 78, 78, 0.334); */
+    filter: brightness(0.9);
 }
 
-.square16x16Click {
+/* .square16x16Click {
     background-color: black;
-}
-
+} */
+/* 
 .square16x16UserBgColor {
-    background-color: red;
-}
+    background-color: rgb(123, 80, 80);
+} */
