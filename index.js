@@ -13,26 +13,45 @@ nouvelle grille de la dimension de son input doit être généré
 
 let squares16x16 = new Array();
 const container = document.querySelector(".container");
+const numberOfSquaresText = document.querySelector(".number-of-squares");
 const userRangeChoice = document.getElementById("user-range-choice");
 const userColorChoice = document.getElementById("user-color-choice");
-const numberOfSquaresText = document.querySelector(".number-of-squares");
+const userEraserAll = document.getElementById("user-eraser-all");
 const userEraser = document.getElementById("user-eraser");
+const span = document.querySelectorAll("span")[1];
+const whiteColor = "#ffffff";
 let isDrawing = false;
-
-
-function eraseSquares() {
-    container.innerHTML = "";
-};
-
-userEraser.addEventListener("input", () => {
-    eraseSquares();
-});
+let isErasing = false;
 
 numberOfSquaresText.textContent = userRangeChoice.value;
 
+
+function eraseAllSquares(square) {
+    square.style.setProperty("background-color", whiteColor);
+};
+
+function eraseOneSquare(square) {
+    userEraser.addEventListener("click", () => {
+        console.log(isErasing);
+        isErasing = true;
+        span.textContent = "On"
+        if (isErasing) {
+            square.addEventListener("click", (squareEvent) => {
+                squareEvent.target.style.setProperty("background-color", whiteColor);
+            });
+            userEraser.addEventListener("click", () => {
+                span.textContent = "Off";
+                isErasing = false;
+            })
+        }
+    })
+}
+
 function drawing(squares) {
     squares.addEventListener("click", (event) => {
+        isErasing = false;
         event.target.style.setProperty("background-color", userColorChoice.value)
+        console.log(isErasing);
     });
 
     squares.addEventListener("mousedown", () => {
@@ -47,6 +66,12 @@ function drawing(squares) {
     squares.addEventListener("mouseup", () => {
         isDrawing = false
     })
+
+    userColorChoice.addEventListener("click", () => {
+        isErasing = false;
+        console.log(isErasing);
+    })
+
 }
 
 function create16x16Grid (grid) {
@@ -63,14 +88,23 @@ function create16x16Grid (grid) {
         //Hover effect on squares
         squares16x16[i].addEventListener("mouseover", (event) => {
             event.target.classList.add("square16x16Hover");
-            console.log("mouseover");
         });
         squares16x16[i].addEventListener("mouseleave", (event) => {
             event.target.classList.remove("square16x16Hover");
         });
 
+        //Erase one by one
+        eraseOneSquare(squares16x16[i]);
+
         //Drawing effects
         drawing(squares16x16[i]);
+
+        //Erase all
+        userEraserAll.addEventListener("click", () => {
+            eraseAllSquares(squares16x16[i]);
+        });
+
+
 
     }
 
