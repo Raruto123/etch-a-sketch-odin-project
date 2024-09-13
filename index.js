@@ -24,6 +24,7 @@ let isDrawing = false;
 let isErasing = false;
 
 numberOfSquaresText.textContent = userRangeChoice.value;
+span.textContent = "Off";
 
 
 function eraseAllSquares(square) {
@@ -31,27 +32,16 @@ function eraseAllSquares(square) {
 };
 
 function eraseOneSquare(square) {
-    userEraser.addEventListener("click", () => {
-        console.log(isErasing);
-        isErasing = true;
-        span.textContent = "On"
-        if (isErasing) {
-            square.addEventListener("click", (squareEvent) => {
-                squareEvent.target.style.setProperty("background-color", whiteColor);
-            });
-            userEraser.addEventListener("click", () => {
-                span.textContent = "Off";
-                isErasing = false;
-            })
-        }
-    })
+    /*
+    1) J'appuie sur le bouton gomme et je peux gommer automatiquement en cliquant un carré
+    2) Lorsque je ré-appuie sur le bouton gomme je dois désactiver la gomme et reprendre mon dessin habituel
+    ainsi de suite
+     */
 }
 
 function drawing(squares) {
     squares.addEventListener("click", (event) => {
-        isErasing = false;
         event.target.style.setProperty("background-color", userColorChoice.value)
-        console.log(isErasing);
     });
 
     squares.addEventListener("mousedown", () => {
@@ -67,10 +57,10 @@ function drawing(squares) {
         isDrawing = false
     })
 
-    userColorChoice.addEventListener("click", () => {
-        isErasing = false;
-        console.log(isErasing);
-    })
+    // userColorChoice.addEventListener("click", () => {
+    //     isErasing = false;
+    //     console.log(isErasing);
+    // })
 
 }
 
@@ -94,7 +84,10 @@ function create16x16Grid (grid) {
         });
 
         //Erase one by one
-        eraseOneSquare(squares16x16[i]);
+        // eraseOneSquare(squares16x16[i]);
+        userEraser.addEventListener("click", () => {
+            eraseOneSquare(squares16x16[i]);
+        });
 
         //Drawing effects
         drawing(squares16x16[i]);
