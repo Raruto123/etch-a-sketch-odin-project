@@ -33,8 +33,10 @@ function eraseAllSquares(square) {
 
 function eraseOneSquare(square) {
     /*
-    1) J'appuie sur le bouton gomme et je peux gommer automatiquement en cliquant un carré
-    2) Lorsque je ré-appuie sur le bouton gomme je dois désactiver la gomme et reprendre mon dessin habituel
+    1) J'appuie sur le bouton gomme et 
+    je peux gommer automatiquement en cliquant un carré
+    2) Lorsque je ré-appuie sur le bouton gomme je dois désactiver la gomme et 
+    reprendre mon dessin habituel
     ainsi de suite
      */
 }
