@@ -19,9 +19,11 @@ const userColorChoice = document.getElementById("user-color-choice");
 const userEraserAll = document.getElementById("user-eraser-all");
 const userEraser = document.getElementById("user-eraser");
 const span = document.querySelectorAll("span")[1];
+const userRandomColor = document.getElementById("user-random-color");
 const whiteColor = "#ffffff";
 let isDrawing = false;
 let isErasing = false;
+let isRandomizing = false;
 
 numberOfSquaresText.textContent = userRangeChoice.value;
 span.textContent = "Off";
@@ -31,15 +33,63 @@ function eraseAllSquares(square) {
     square.style.setProperty("background-color", whiteColor);
 };
 
+// Fonction pour gommer ou dessiner en fonction de l'état de la gomme
 function eraseOneSquare(square) {
-    /*
-    1) J'appuie sur le bouton gomme et 
-    je peux gommer automatiquement en cliquant un carré
-    2) Lorsque je ré-appuie sur le bouton gomme je dois désactiver la gomme et 
-    reprendre mon dessin habituel
-    ainsi de suite
-     */
+    // Si la gomme est active, alors on efface
+    if (isErasing) {
+        square.style.setProperty("background-color", whiteColor);
+    } else {
+        // Si la gomme n'est pas active, on dessine avec la couleur choisie
+        square.style.setProperty("background-color", userColorChoice.value);
+    }
 }
+
+// Fonction pour basculer entre gomme et dessin
+function toggleEraser() {
+    isErasing = !isErasing;  // Alterner entre gommer et dessiner
+
+    // Changer le texte du bouton pour indiquer à l'utilisateur l'état de la gomme
+    if (isErasing) {
+        userEraser.textContent = "Désactiver la gomme";
+    } else {
+        userEraser.textContent = "Activer la gomme";
+    }
+}
+
+function random(min, max) {
+    const number = Math.floor(Math.random() * (max -min) + min);
+
+    return number
+}
+
+function randomColor() {
+    return `rgb(${random(0, 255)}, ${random(0,255)}, ${random(0, 255)})`
+}
+
+function setRandomBgColor(square) {
+    const newRandomBgColor = randomColor();
+    square.style.setProperty("background-color", newRandomBgColor)
+}
+
+function randomSquareColor(square) {
+
+    if (isRandomizing) {
+        setRandomBgColor(square)
+    } else {
+        square.style.setProperty("background-color", userColorChoice.value)
+    }
+}
+
+function toggleRandomColor() {
+    isRandomizing = !isRandomizing;
+
+    if (isRandomizing) {
+        userRandomColor.textContent = "Désactiver couleur aléatoire";
+    } else {
+        userRandomColor.textContent = "Activer couleur aléatoire";
+    }
+}
+
 
 function drawing(squares) {
     squares.addEventListener("click", (event) => {
@@ -58,11 +108,6 @@ function drawing(squares) {
     squares.addEventListener("mouseup", () => {
         isDrawing = false
     })
-
-    // userColorChoice.addEventListener("click", () => {
-    //     isErasing = false;
-    //     console.log(isErasing);
-    // })
 
 }
 
@@ -85,12 +130,6 @@ function create16x16Grid (grid) {
             event.target.classList.remove("square16x16Hover");
         });
 
-        //Erase one by one
-        // eraseOneSquare(squares16x16[i]);
-        userEraser.addEventListener("click", () => {
-            eraseOneSquare(squares16x16[i]);
-        });
-
         //Drawing effects
         drawing(squares16x16[i]);
 
@@ -99,9 +138,36 @@ function create16x16Grid (grid) {
             eraseAllSquares(squares16x16[i]);
         });
 
-
-
     }
+
+    userRandomColor.addEventListener("click", () => {
+        toggleRandomColor();
+        console.log(isErasing)
+        //je dois gérer maintenant les différents états lorsque isRandomizing et isErasing sont tous les deux vrais s'ils sont faux s'ils sont vrais et faux etc.
+        if (isRandomizing) {
+            squares16x16.forEach(square => {
+                square.addEventListener("click", (event) => {
+                    randomSquareColor(event.target); // Appel à la fonction eraseOneSquare
+                });
+            });
+        }
+    });
+        // Ajout de l'EventListener pour dessiner ou effacer en fonction de l'état de la gomme
+
+        // Ajout de l'EventListener pour activer/désactiver la gomme
+        userEraser.addEventListener("click", () => {
+            toggleEraser();
+            console.log(isErasing);
+            if(isErasing) {
+                squares16x16.forEach(square => {
+                    square.addEventListener("click", (event) => {
+                        eraseOneSquare(event.target); // Appel à la fonction eraseOneSquare
+                    });
+                });
+            }
+        });
+
+
 
 }
 
