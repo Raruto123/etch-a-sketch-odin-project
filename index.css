@@ -31,10 +31,15 @@
     filter: brightness(0.9);
 }
 
-/* .square16x16Click {
-    background-color: black;
-} */
-/* 
-.square16x16UserBgColor {
-    background-color: rgb(123, 80, 80);
-} */
+button {
+    width : auto;
+    height: 50px;
+}
+
+.new-grid {
+    height: 700px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

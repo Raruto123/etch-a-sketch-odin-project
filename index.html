@@ -3,20 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="5"> -->
     <link href="./index.css" rel="stylesheet">
     <title>Etch-a-Sketch</title>
 </head>
 <body>
     <div class="new-grid">
-        <input type="range" min="16" max="168" value="32" id="user-range-choice" title="Selects a number of squares for the grid"><span class="number-of-squares">Number of Squares</span>
-        <input type="color" id="user-color-choice" value="#ffffff" title="Choose a pencil color">
-        <button title="Erase all" id="user-eraser-all">Erase all</button> 
-        <button title="Erase one by one" id="user-eraser">Eraser</button>
-        <button title="Pencil to draw" id="user-random-color">Random color</button>
+        <!-- <label for="pet-select">Choose a pet:</label>
+
+<select name="pets" id="user-range-choice">
+  <option value="">--Please choose an option--</option>
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="32">8x4</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</select> -->
+        <div>
+            <label for="user-range-choice">Choose a canvas size : </label>
+            <input 
+            type="range" 
+            min="16" 
+            max="104" 
+            value="32" 
+            id="user-range-choice" 
+            title="Selects a number of squares for the grid">
+            <span class="number-of-squares">Number of Squares</span>
+        </div>
+        <input 
+        type="color" 
+        id="user-color-choice" 
+        value="#ffffff" 
+        title="Choose a pencil color">
+        <button title="Erase all" id="user-eraser-all">
+            <i class="fa-solid fa-broom fa-2xl"></i>        
+            </button> 
+        <button title="Erase one by one" id="user-eraser">
+            <i class="fa-solid fa-eraser fa-2xl"></i>
+        </button>
+        <button title="Pencil to draw with a random color" id="user-random-color">
+            <i class="fa-solid fa-pencil fa-2xl"></i>       
+         </button>
     </div>
     <div class="container">
         <!-- JE SUIS AU MILIEU -->
     </div>
     <script src="./index.js"></script>
+    <script src="https://kit.fontawesome.com/e779610bdb.js" crossorigin="anonymous"></script>
 </body>
 </html>
