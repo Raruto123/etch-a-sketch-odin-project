@@ -104,8 +104,8 @@ function drawing(squares) {
 function create16x16Grid (grid) {
 
     container.innerHTML = ""; // Initialize the container every time
-    userColorChoice.value = "#000000";//Starting color 
-
+    userColorChoice.value = "#000000";//Starting color
+    
 
     for (let i = 0; i < grid; i++) {
         squares16x16[i] = document.createElement("div");//Assign new div element to the array objects of 16 elements
